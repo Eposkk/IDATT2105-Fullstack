@@ -126,7 +126,7 @@ export default {
 }
 
 #calc {
-  max-width: 1000px;
+  max-width: 250px;
   margin: auto;
 }
 
@@ -183,10 +183,11 @@ button {
 button:hover {
   background: linear-gradient(to bottom, #ccc2a6 5%, #eae0c2 100%);
   background-color: #ccc2a6;
+  transform: scale(1.05);
 }
 button:active {
-  position: relative;
-  top: 1px;
+  box-shadow: 0px 4px 8px;
+  transform: scale(.98);
 }
 
 h1 {
