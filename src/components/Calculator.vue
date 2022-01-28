@@ -152,7 +152,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #title {
-  padding: 10px;
+  padding: 5px;
 }
 
 #calc {
@@ -169,12 +169,16 @@ export default {
   border: 2px solid #333029;
   color: #ccc2a6;
   max-height: 265px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(8, 1fr);
 }
 
 #history {
   align-items: center;
   max-height: 205px;
   overflow: auto;
+  grid-row: 1 / span 7;
 }
 
 #page {
@@ -252,10 +256,28 @@ h1 {
 #clearBtn {
   margin: 10px;
   padding: 10px;
+  grid-row: 8;
 }
 
 #equals {
   grid-column: 3 / span 2;
   background: #ffbc00 linear-gradient(to bottom, #ffce39 5%, #af9444 100%);
+}
+
+@media screen and (max-width: 800px) {
+  #page {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: unset;
+    border: 0;
+    width: 100%;
+    max-width: 800px;
+    gap: 10px;
+    margin: auto;
+  }
+  #historyBox {
+    max-width: 250px;
+    margin: auto;
+  }
 }
 </style>
