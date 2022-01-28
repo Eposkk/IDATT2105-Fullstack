@@ -1,9 +1,13 @@
-# calculator
+# Calculator
 
-## Project setup
-```
-npm install
-```
+A very basic calculator made in Vue
+
+Check it out at:
+
+## <a href='https://eposkk.github.io/calculator/'>Calculator</a>
+
+
+
 
 ### Compiles and hot-reloads for development
 ```
@@ -14,11 +18,3 @@ npm run serve
 ```
 npm run build
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
