@@ -98,7 +98,7 @@ export default {
           this.history
             .push(
               this.firstValue +
-                "*" +
+                "×" +
                 this.secondValue +
                 "=" +
                 this.current +
@@ -110,13 +110,21 @@ export default {
           this.current = (
             parseFloat(this.firstValue) / parseFloat(this.secondValue)
           ).toFixed(3);
-          this.history.push(
-            this.firstValue + "/" + this.secondValue + "=" + this.current + "\n"
-          );
+          this.history
+            .push(
+              this.firstValue +
+                "÷" +
+                this.secondValue +
+                "=" +
+                this.current +
+                "\n"
+            )
+            .toFixed(3);
           break;
         default:
           console.log("Dust");
       }
+      this.previous = this.current;
     },
     operatorSelection(operator) {
       this.operator = operator;
@@ -124,7 +132,7 @@ export default {
       this.current = "";
     },
     deleteButton() {
-      this.current = this.current.slice(0, -1);
+      this.current = this.current.toString().slice(0, -1);
     },
     previousButton() {
       this.current = this.previous;
