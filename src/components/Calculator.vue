@@ -5,7 +5,7 @@
       <div id="input">{{ current }}</div>
 
       <div class="buttons">
-        <button id="clear" @click="clear">C</button>
+        <button @click="clear">C</button>
         <button id="ans" @click="previousButton">Ans</button>
         <button id="delete" @click="deleteButton()">Del</button>
         <button id="pluss" @click="operatorSelection('+')">+</button>
@@ -18,16 +18,15 @@
         <button @click="buttonClick(4)">4</button>
         <button @click="buttonClick(5)">5</button>
         <button @click="buttonClick(6)">6</button>
-        <button id="multiply" @click="operatorSelection('*')">*</button>
+        <button id="multiply" @click="operatorSelection('*')">×</button>
 
         <button @click="buttonClick(7)">7</button>
         <button @click="buttonClick(8)">8</button>
         <button @click="buttonClick(9)">9</button>
-        <button id="divide" @click="operatorSelection('/')">/</button>
+        <button id="divide" @click="operatorSelection('/')">÷</button>
 
-        <button id="null"></button>
-        <button id="0" @click="buttonClick(0)">0</button>
         <button id="comma" @click="comma">.</button>
+        <button id="0" @click="buttonClick(0)">0</button>
         <button id="equals" @click="equals()">=</button>
       </div>
     </div>
@@ -65,29 +64,52 @@ export default {
       this.secondValue = this.current;
       switch (this.operator) {
         case "+":
-          this.current =
-            parseFloat(this.firstValue) + parseFloat(this.secondValue);
-          this.history.push(
-            this.firstValue + "+" + this.secondValue + "=" + this.current + "\n"
+          this.current = Math.round(
+            parseFloat(this.firstValue) + parseFloat(this.secondValue)
           );
+          this.history
+            .push(
+              this.firstValue +
+                "+" +
+                this.secondValue +
+                "=" +
+                this.current +
+                "\n"
+            )
+            .toFixed(3);
           break;
         case "-":
           this.current =
             parseFloat(this.firstValue) - parseFloat(this.secondValue);
-          this.history.push(
-            this.firstValue + "-" + this.secondValue + "=" + this.current + "\n"
-          );
+          this.history
+            .push(
+              this.firstValue +
+                "-" +
+                this.secondValue +
+                "=" +
+                this.current +
+                "\n"
+            )
+            .toFixed(3);
           break;
         case "*":
           this.current =
             parseFloat(this.firstValue) * parseFloat(this.secondValue);
-          this.history.push(
-            this.firstValue + "*" + this.secondValue + "=" + this.current + "\n"
-          );
+          this.history
+            .push(
+              this.firstValue +
+                "*" +
+                this.secondValue +
+                "=" +
+                this.current +
+                "\n"
+            )
+            .toFixed(3);
           break;
         case "/":
-          this.current =
-            parseFloat(this.firstValue) / parseFloat(this.secondValue);
+          this.current = (
+            parseFloat(this.firstValue) / parseFloat(this.secondValue)
+          ).toFixed(3);
           this.history.push(
             this.firstValue + "/" + this.secondValue + "=" + this.current + "\n"
           );
@@ -139,10 +161,9 @@ export default {
   border: 2px solid #333029;
   color: #ccc2a6;
   max-height: 265px;
-
 }
 
-#history{
+#history {
   align-items: center;
   max-height: 205px;
   overflow: auto;
@@ -165,39 +186,41 @@ export default {
 }
 
 button {
-  box-shadow: 0px 1px 0px 0px #1c1b18;
+  box-shadow: 0 1px 0 0 #1c1b18;
   background: #eae0c2 linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
   border-radius: 15px;
   border: 2px solid #333029;
   display: inline-block;
   cursor: pointer;
   color: #505739;
-  font-family: Arial;
+  font-family: Arial, serif;
   font-size: 14px;
   font-weight: bold;
   padding: 12px 16px;
   text-decoration: none;
-  text-shadow: 0px 1px 0px #ffffff;
+  text-shadow: 0 1px 0 #ffffff;
+  margin: 1px;
 }
 
 button:hover {
-  background: linear-gradient(to bottom, #ccc2a6 5%, #eae0c2 100%);
-  background-color: #ccc2a6;
+  background: #ccc2a6 linear-gradient(to bottom, #ccc2a6 5%, #eae0c2 100%);
   transform: scale(1.05);
 }
 button:active {
-  box-shadow: 0px 4px 8px;
-  transform: scale(.98);
+  box-shadow: 0 4px 8px;
+  transform: scale(0.98);
 }
 
 h1 {
-  color: #111;
   font-family: "Helvetica Neue", sans-serif;
   font-size: 40px;
   font-weight: bold;
   letter-spacing: -1px;
   line-height: 1;
   text-align: center;
+  color: #151313;
+  padding: 12px 16px;
+  text-shadow: 0 1px 0 #313030;
 }
 
 #input {
@@ -215,11 +238,16 @@ h1 {
 
 #list {
   list-style-type: none;
-  padding: 0px;
+  padding: 0;
 }
 
 #clearBtn {
   margin: 10px;
   padding: 10px;
+}
+
+#equals {
+  grid-column: 3 / span 2;
+  background: #ffbc00 linear-gradient(to bottom, #ffce39 5%, #af9444 100%);
 }
 </style>
