@@ -4,7 +4,7 @@ A very basic calculator made in Vue
 
 Check it out at:
 
-## <a href='https://eposkk.github.io/calculator/'>Calculator</a>
+## <a href='http://www.somflytta.me'>Calculator</a>
 
 
 
