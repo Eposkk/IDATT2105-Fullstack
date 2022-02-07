@@ -1,4 +1,4 @@
-# Calculator
+# IDATT2105-Fullstack
 
 A very basic calculator made in Vue
 
