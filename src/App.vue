@@ -1,9 +1,10 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/kontaktskjema">About</router-link>
+    <router-link class="routerLink" to="/">Home</router-link>
+    <router-link class="routerLink" to="/about">About</router-link>
+    <router-link class="routerLink" to="/kontaktskjema">Contact me</router-link>
   </div>
-  <router-view />
+  <router-view class="view" />
 </template>
 
 <style>
@@ -21,10 +22,14 @@
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #23262d;
 }
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.routerLink {
+  padding: 4px;
 }
 </style>
