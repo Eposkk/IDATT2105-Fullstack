@@ -11,6 +11,6 @@ git add -A
 git commit -m 'deploy'
 
 #Push to gh-pages branch
-git push -f https://github.com/eposkk/calculator.git master:gh-pages
+git push -f https://github.com/Eposkk/IDATT2105-Fullstack.git master:gh-pages
 
 cd -
