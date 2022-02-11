@@ -1,6 +1,7 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>Contact me</h1>
+    <h2>Fill out the form to send an inquiry</h2>
     <form @submit.prevent="onSubmit">
       <BaseInput label="Name" type="name" :modelValue="name" />
       <BaseInput label="Email" type="email" :modelValue="email" />
