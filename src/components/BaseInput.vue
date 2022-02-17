@@ -1,4 +1,4 @@
-<template>
+<template id="template">
   <label :for="uuid" v-if="label">
     {{ label }}
   </label>
@@ -14,14 +14,23 @@
     :aria-describedby="error ? '${uuid}-error' : null"
     :aria-invalid="!!error"
     :class="{ error }"
+    @input="$emit('update:modelValue', $event.target.value)"
   />
+  <BaseErrorMessage v-if="error" :id="`${uuid}-error`">
+    {{ error }}
+  </BaseErrorMessage>
 </template>
 
 <script>
 import UniqueId from "../features/UniqueId";
 import SetupFormComponent from "../features/SetupFormComponent";
+import BaseErrorMessage from "@/components/BaseErrorMessage";
+
 export default {
   name: "BaseInput",
+  components: {
+    BaseErrorMessage,
+  },
   props: {
     label: {
       type: String,
