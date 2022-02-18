@@ -2,108 +2,105 @@
   <div class="about">
     <h1>Contact me</h1>
     <h2>Fill out the form to send an inquiry</h2>
-    <form @submit.prevent="onSubmit" id="inputs">
+    <form @submit="submit" id="inputs">
       <BaseInput
-        id="input"
+        class="input"
         label="Name"
         type="text"
-        modelValue=""
-        v-model="submission.name"
-        :error="nameError"
+        v-model="name"
+        :error="errors.name"
       />
       <BaseInput
-        id="input"
+        class="input"
         label="Email"
         type="email"
-        modelValue=""
-        v-model="submission.email"
-        :error="emailError"
+        v-model="email"
+        :error="errors.email"
       />
       <BaseInput
-        id="input"
+        class="input"
         label="Message"
         type="text"
-        modelValue=""
-        v-model="submission.email"
-        :error="messageError"
+        v-model="message"
+        :error="errors.message"
       />
-      <button id="input" :disabled="isValid">Submit</button>
+      <button id="submitButton" type="submit">Submit</button>
     </form>
-    <div>
-      <ul>
-        <li>{{ email }}</li>
-      </ul>
-    </div>
   </div>
 </template>
 <script>
 import BaseInput from "../components/BaseInput";
 import { useField, useForm } from "vee-validate";
+import * as yup from "yup";
+import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
 
 export default {
   components: { BaseInput },
   setup() {
-    const failMessage = "Required Field";
-    const validations = {
-      email: (value) => {
-        if (!value) return failMessage;
-
-        const regexForEmailCheck =
-          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if (!regexForEmailCheck.test(String(value).toLowerCase()))
-          return "Enter a valid email";
-        return true;
-      },
-      name: (value) => {
-        if (value === undefined || value == null) return failMessage;
-        if (!String(value).length) return failMessage;
-        return true;
-      },
-      message: (value) => {
-        if (value === undefined || value == null) return failMessage;
-        if (!String(value).length) return failMessage;
-        return true;
-      },
-    };
-
-    useForm({
+    const validations = yup.object({
+      email: yup.string().required().email(),
+      message: yup.string().required(),
+      name: yup
+        .string()
+        .required()
+        .matches(/^[A-ÅÆØa-æøå ]*$/, "Please enter valid name"),
+    });
+    const { handleSubmit, errors } = useForm({
       validationSchema: validations,
     });
 
-    const {
-      value: email,
-      errorMessage: emailError,
-      handleChange,
-    } = useField("email");
-    const { value: name, errorMessage: nameError } = useField("name");
-    const { value: message, errorMessage: messageError } = useField("name");
+    const { value: email } = useField("email");
+    const { value: name } = useField("name");
+    const { value: message } = useField("message");
+
+    const submit = handleSubmit((values) => {
+      axios
+        .post(
+          "https://my-json-server.typicode.com/Eposkk/IDATT2105-Fullstack/submission",
+          values
+        )
+        .then(function (response) {
+          console.log("Response: " + response);
+        })
+        .catch(function (err) {
+          console.log("Error: " + err);
+        });
+      alert(
+        "Email: " +
+          values.email +
+          "\nName: " +
+          values.name +
+          "\nMessage: " +
+          values.message +
+          "\nHas been sent, Thanks for your feedback!"
+      );
+      const submission = { ...this.submission, id: uuidv4() };
+      this.$store
+        .dispatch("submitSubmission", submission)
+        .then(() => {
+          this.$router.push({
+            name: "FeedbackDetails",
+            params: { id: submission.id },
+          });
+        })
+        .catch((error) => {
+          this.$router.push({
+            name: "ErrorDisplay",
+            params: { error: error },
+          });
+        });
+    });
 
     return {
       email,
       name,
       message,
-      emailError,
-      nameError,
-      messageError,
-      handleChange,
+      errors,
+      submit,
     };
   },
-  data() {
-    return {
-      submission: {
-        name: "",
-        email: "",
-        message: "",
-      },
-    };
-  },
-  computed: {
-    isValid() {
-      return (
-        this.submission.email && this.submission.name && this.submission.message
-      );
-    },
-  },
+  created() {},
 };
 </script>
 
@@ -116,11 +113,7 @@ export default {
   margin: auto;
 }
 
-#input {
-  margin: 10px;
-}
-
-button {
+#submitButton {
   box-shadow: 0 1px 0 0 #1c1b18;
   background: #eae0c2 linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
   border-radius: 15px;
@@ -134,17 +127,11 @@ button {
   padding: 12px 16px;
   text-decoration: none;
   text-shadow: 0 1px 0 #ffffff;
-  margin: 1px;
+  margin: 10px;
 }
 
-button:hover:enabled {
+#submitButton:hover {
   background: #ccc2a6 linear-gradient(to bottom, #ccc2a6 5%, #eae0c2 100%);
   transform: scale(1.05);
-}
-
-button:disabled {
-  background: #a47e7e;
-  cursor: not-allowed;
-  color: #1e1b1b;
 }
 </style>
