@@ -1,5 +1,7 @@
 <template>
-  <p aria-live="assertive" :id="id"><slot /></p>
+  <p aria-live="assertive" class="errorMessage" :id="id">
+    <slot />
+  </p>
 </template>
 
 <script>
@@ -14,4 +16,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.errorMessage {
+  color: red;
+}
+</style>
