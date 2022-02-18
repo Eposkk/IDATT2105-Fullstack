@@ -9,8 +9,8 @@ set -e
 yarn build
 
 #Add CNAME file
-cp CNAME dist/
 cd dist
+echo 'dudensomflytta.no' > CNAME
 
 #Git
 git init
