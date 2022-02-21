@@ -3,7 +3,8 @@ import { createStore } from "vuex";
 export default createStore({
   state: {
     user: "",
-    Email: "",
+    email: "",
+    flashMessage: "",
     submissions: {},
     submission: [],
   },
@@ -19,6 +20,9 @@ export default createStore({
     },
     SET_EMAIL(state, email) {
       state.email = email;
+    },
+    SET_FLASHMESSAGE(state, flashMessage) {
+      state.flashMessage = flashMessage;
     },
   },
   actions: {
