@@ -6,6 +6,7 @@
     <router-link class="routerLink" to="/">Home</router-link>
     <router-link class="routerLink" to="/about">About</router-link>
     <router-link class="routerLink" to="/kontaktskjema">Contact me</router-link>
+    <router-link class="routerLink" to="/login">Login</router-link>
   </div>
   <router-view class="view" />
 </template>
