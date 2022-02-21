@@ -24,7 +24,13 @@
         v-model="message"
         :error="errors.message"
       />
-      <button id="submitButton" type="submit">Submit</button>
+      <button
+        id="submitButton"
+        type="submit"
+        :disabled="errors.name || errors.email || errors.message"
+      >
+        Submit
+      </button>
     </form>
   </div>
 </template>
@@ -32,8 +38,8 @@
 import BaseInput from "../components/BaseInput";
 import { useField, useForm } from "vee-validate";
 import * as yup from "yup";
-import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
+import { useStore } from "vuex";
 
 export default {
   components: { BaseInput },
@@ -48,48 +54,47 @@ export default {
     });
     const { handleSubmit, errors } = useForm({
       validationSchema: validations,
+      initialValues: {
+        name: "",
+        email: "",
+        message: "",
+      },
     });
 
     const { value: email } = useField("email");
     const { value: name } = useField("name");
     const { value: message } = useField("message");
 
+    const store = useStore();
+
+    name.value = store.state.user;
+    email.value = store.state.email;
+
     const submit = handleSubmit((values) => {
-      axios
-        .post(
-          "https://my-json-server.typicode.com/Eposkk/IDATT2105-Fullstack/submission",
-          values
-        )
-        .then(function (response) {
-          console.log("Response: " + response);
-        })
-        .catch(function (err) {
-          console.log("Error: " + err);
-        });
-      alert(
-        "Email: " +
-          values.email +
-          "\nName: " +
-          values.name +
-          "\nMessage: " +
-          values.message +
-          "\nHas been sent, Thanks for your feedback!"
-      );
-      const submission = { ...this.submission, id: uuidv4() };
-      this.$store
-        .dispatch("submitSubmission", submission)
-        .then(() => {
-          this.$router.push({
-            name: "FeedbackDetails",
-            params: { id: submission.id },
+      store.commit("SET_FLASHMESSAGE", "Sending...");
+      setTimeout(() => {
+        store.commit("SET_USER", name);
+        store.commit("SET_EMAIL", email);
+        axios
+          .post(
+            "https://my-json-server.typicode.com/Eposkk/IDATT2105-Fullstack/submission",
+            values
+          )
+          .then(function (response) {
+            console.log("Response: " + response);
+          })
+          .catch(function (err) {
+            console.log("Error: " + err);
           });
-        })
-        .catch((error) => {
-          this.$router.push({
-            name: "ErrorDisplay",
-            params: { error: error },
-          });
-        });
+      }, 2000);
+
+      setTimeout(() => {
+        store.commit("SET_FLASHMESSAGE", "Finished");
+      }, 1000);
+
+      setTimeout(() => {
+        store.commit("SET_FLASHMESSAGE", "");
+      }, 2000);
     });
 
     return {
@@ -100,7 +105,6 @@ export default {
       submit,
     };
   },
-  created() {},
 };
 </script>
 
@@ -130,8 +134,13 @@ export default {
   margin: 10px;
 }
 
-#submitButton:hover {
+#submitButton:hover:enabled {
   background: #ccc2a6 linear-gradient(to bottom, #ccc2a6 5%, #eae0c2 100%);
   transform: scale(1.05);
+}
+
+#submitButton:disabled {
+  background: #5a5545;
+  color: #ffffff;
 }
 </style>
