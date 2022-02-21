@@ -1,4 +1,7 @@
 <template>
+  <div id="flashMessage" v-if="this.$store.state.flashMessage">
+    {{ this.$store.state.flashMessage }}
+  </div>
   <div id="nav">
     <router-link class="routerLink" to="/">Home</router-link>
     <router-link class="routerLink" to="/about">About</router-link>
@@ -31,5 +34,20 @@
 
 .routerLink {
   padding: 4px;
+}
+
+@keyframes fade {
+  from {
+    background: #42b983;
+  }
+  to {
+    background: transparent;
+  }
+}
+
+#flashMessage {
+  animation-name: fade;
+  animation-duration: 2s;
+  color: black;
 }
 </style>
