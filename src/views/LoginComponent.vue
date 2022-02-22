@@ -5,15 +5,15 @@
     </div>
     <div id="username">
       <label id="usernameLabel">Username:</label>
-      <textarea v-model="user.username"></textarea>
+      <input v-model="user.username" />
     </div>
     <div id="password">
       <label id="passwordLabel">Password: </label>
-      <textarea v-model="user.password"></textarea>
-      <button v-on:click="handleClickSignin_2">Sign in</button>
+      <input v-model="user.password" />
+      <button v-on:click="handleClickSignin">Sign in</button>
     </div>
     <router-link to="/register"
-      ><p>{{ loginStatus }}</p></router-link
+      ><p v-if="loginStatus">{{ loginStatus }}</p></router-link
     >
   </div>
 </template>
@@ -22,7 +22,7 @@
 export default {
   name: "LoginComponent",
   methods: {
-    handleClickSignin_2() {
+    handleClickSignin() {
       this.$store.dispatch("fetchUserName", this.user.username);
       if (this.$store.state.currentUser.username === this.user.username) {
         if (this.$store.state.currentUser.password === this.user.password) {
@@ -30,11 +30,12 @@ export default {
           this.loginStatus = "Logged in";
           this.$store.state.console.log("Logged i");
         } else {
-          this.loginStatus = "Not logged in, register by clicking me";
+          this.loginStatus =
+            "Username or password is wrong, register by clicking me";
           console.log("Not logged in");
         }
       } else {
-        this.loginStatus = "Not logged in, register by clicking me";
+        this.loginStatus = "Username not found, register by clicking me";
         console.log("Not logged in");
       }
     },
@@ -73,6 +74,7 @@ export default {
   flex-direction: row;
   align-items: center;
   column-gap: 20px;
+  margin: 10px;
 }
 
 #usernameLabel,
