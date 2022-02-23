@@ -4,31 +4,47 @@
       <label>Please login!</label>
     </div>
     <div id="username">
-      <label id="usernameLabel">Username:</label>
-      <input v-model="user.username" />
+      <label>Username:</label>
+      <input
+        data-test="userInput"
+        type="text"
+        name="username"
+        v-model="user.username"
+      />
     </div>
     <div id="password">
       <label id="passwordLabel">Password: </label>
-      <input v-model="user.password" />
-      <button v-on:click="handleClickSignin">Sign in</button>
+      <input
+        data-test="passwordInput"
+        type="password"
+        v-model="user.password"
+      />
+      <button data-test="button" v-on:click="handleClickSignin">Sign in</button>
     </div>
-    <router-link to="/register"
-      ><p v-if="loginStatus">{{ loginStatus }}</p></router-link
-    >
+    <div id="loginStatus">
+      <router-link to="/register"
+        ><p data-test="loginStatus" v-if="loginStatus">
+          {{ loginStatus }}
+        </p></router-link
+      >
+    </div>
   </div>
 </template>
 
 <script>
+import store from "@/store";
+import router from "@/router";
 export default {
   name: "LoginComponent",
   methods: {
     handleClickSignin() {
-      this.$store.dispatch("fetchUserName", this.user.username);
-      if (this.$store.state.currentUser.username === this.user.username) {
-        if (this.$store.state.currentUser.password === this.user.password) {
-          this.$router.push("/");
+      store.dispatch("fetchUserName", this.user.username);
+      console.log(this.user.username);
+      if (store.state.currentUser.username === this.user.username) {
+        if (store.state.currentUser.password === this.user.password) {
           this.loginStatus = "Logged in";
-          this.$store.state.console.log("Logged i");
+          router.push("/");
+          console.log("Logged in");
         } else {
           this.loginStatus =
             "Username or password is wrong, register by clicking me";
@@ -50,7 +66,7 @@ export default {
     };
   },
   mounted() {
-    this.$store.dispatch("fetchUsers");
+    store.dispatch("fetchUsers");
   },
 };
 </script>
