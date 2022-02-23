@@ -1,6 +1,6 @@
 # IDATT2105-Fullstack
 
-A very basic calculator made in Vue
+All mandatory assigments in the subject IDATT2105-Fullstack
 
 Check it out at (Click image):
 
