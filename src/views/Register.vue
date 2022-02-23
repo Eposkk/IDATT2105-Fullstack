@@ -3,29 +3,43 @@
     <h1 id="header">Please register!</h1>
     <BaseInput class="input" label="Name" type="text" />
     <BaseInput class="input" label="Email" type="email" />
-    <BaseInput
-      class="input"
-      label="Username"
-      type="username"
-      v-model="user.username"
-    />
-    <BaseInput
-      class="input"
-      label="Password"
-      type="password"
-      v-model="user.password"
-    />
+    <div id="username">
+      <label>Username:</label>
+      <input
+        data-test="usernameRegInput"
+        type="text"
+        name="username"
+        v-model="user.username"
+      />
+    </div>
+    <div id="password">
+      <label id="passwordLabel">Password: </label>
+      <input
+        data-test="passwordRegInput"
+        type="password"
+        v-model="user.password"
+      />
+    </div>
     <BaseInput class="input" label="Phone Number" type="tel" />
 
-    <button id="submitRegistartion" v-on:click="handleRegistration">
+    <button
+      id="submitRegistartion"
+      v-on:click="handleRegistration"
+      data-test="button"
+    >
       Register
     </button>
+    <label data-test="registrationStatus" v-if="registrationStatus">
+      {{ this.registrationStatus }}
+    </label>
   </div>
 </template>
 
 <script>
 import BaseInput from "../components/BaseInput";
+import store from "@/store";
 import { v4 as uuidv4 } from "uuid";
+
 export default {
   components: { BaseInput },
   name: "Register",
@@ -35,16 +49,18 @@ export default {
         ...this.user,
         id: uuidv4(),
       };
-      console.log(user);
-      this.$store.dispatch("postNewUser", user).then(() => {
-        setTimeout(
-          () =>
-            this.$router.push("/login").catch((error) => {
-              console.log(error);
-            }),
-          100
-        );
-      });
+      if (!(user.username === "" || user.password === "")) {
+        console.log(user);
+        store.dispatch("postNewUser", user).then(() => {
+          setTimeout(
+            () =>
+              this.$router.push("/login").catch((error) => {
+                console.log(error);
+              }),
+            100
+          );
+        });
+      } else this.registrationStatus = "Please fill out the registration";
     },
   },
 
@@ -55,6 +71,7 @@ export default {
         username: "",
         password: "",
       },
+      registrationStatus: "",
     };
   },
 };
