@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
@@ -54,6 +55,77 @@ export default {
     };
   },
   methods: {
+    sendCalculation(object) {
+      const apiClient = axios.create({
+        baseURL: "http://localhost:8001/api",
+        withCredentials: false,
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+      apiClient
+        .post("/calc", object)
+        .then((response) => {
+          console.log("Sent successfully answer: " + response.data);
+          this.current = response.data.answer;
+          console.table(response.data);
+          switch (this.operator) {
+            case "+":
+              this.history
+                .push(
+                  this.firstValue +
+                    "+" +
+                    this.secondValue +
+                    "=" +
+                    this.current +
+                    "\n"
+                )
+                .toFixed(3);
+              break;
+            case "-":
+              this.history
+                .push(
+                  this.firstValue +
+                    "-" +
+                    this.secondValue +
+                    "=" +
+                    this.current +
+                    "\n"
+                )
+                .toFixed(3);
+              break;
+            case "*":
+              this.history
+                .push(
+                  this.firstValue +
+                    "×" +
+                    this.secondValue +
+                    "=" +
+                    this.current +
+                    "\n"
+                )
+                .toFixed(3);
+              break;
+            case "/":
+              this.history
+                .push(
+                  this.firstValue +
+                    "÷" +
+                    this.secondValue +
+                    "=" +
+                    this.current +
+                    "\n"
+                )
+                .toFixed(3);
+              break;
+          }
+        })
+        .catch((error) => {
+          console.log("Failed to send with error: " + error);
+        });
+    },
+
     buttonClick(value) {
       this.current = this.current + "" + value;
     },
@@ -62,68 +134,12 @@ export default {
     },
     equals() {
       this.secondValue = this.current;
-      switch (this.operator) {
-        case "+":
-          this.current = Math.round(
-            parseFloat(this.firstValue) + parseFloat(this.secondValue)
-          );
-          this.history
-            .push(
-              this.firstValue +
-                "+" +
-                this.secondValue +
-                "=" +
-                this.current +
-                "\n"
-            )
-            .toFixed(3);
-          break;
-        case "-":
-          this.current =
-            parseFloat(this.firstValue) - parseFloat(this.secondValue);
-          this.history
-            .push(
-              this.firstValue +
-                "-" +
-                this.secondValue +
-                "=" +
-                this.current +
-                "\n"
-            )
-            .toFixed(3);
-          break;
-        case "*":
-          this.current =
-            parseFloat(this.firstValue) * parseFloat(this.secondValue);
-          this.history
-            .push(
-              this.firstValue +
-                "×" +
-                this.secondValue +
-                "=" +
-                this.current +
-                "\n"
-            )
-            .toFixed(3);
-          break;
-        case "/":
-          this.current = (
-            parseFloat(this.firstValue) / parseFloat(this.secondValue)
-          ).toFixed(3);
-          this.history
-            .push(
-              this.firstValue +
-                "÷" +
-                this.secondValue +
-                "=" +
-                this.current +
-                "\n"
-            )
-            .toFixed(3);
-          break;
-        default:
-          console.log("Dust");
-      }
+      const object = {
+        firstValue: this.firstValue,
+        operator: this.operator,
+        secondValue: this.secondValue,
+      };
+      this.sendCalculation(object);
       this.previous = this.current;
     },
     operatorSelection(operator) {
