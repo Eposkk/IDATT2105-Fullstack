@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "http://localhost:8001",
   withCredentials: false,
   headers: {
     Accept: "application/json",
@@ -10,13 +10,49 @@ const apiClient = axios.create({
 });
 
 export default {
+  getHistory(config) {
+    return apiClient.get("/history", config).then((response) => {
+      console.log(response.data);
+      return response.data;
+    });
+  },
+  getUser(user) {
+    return apiClient
+      .post("/user", null, {
+        params: {
+          username: user.username,
+          password: user.password,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        return response.data;
+      });
+  },
+
+  getToken(user) {
+    return apiClient
+      .post("/token", null, {
+        params: {
+          username: user.username,
+          password: user.password,
+        },
+      })
+      .then((response) => {
+        return response.data;
+      });
+  },
+
   postUser(user) {
-    return apiClient.post("/users", user);
-  },
-  getUsers() {
-    return apiClient.get("/users");
-  },
-  getUser(id) {
-    return apiClient.get("/user/" + id);
+    return apiClient
+      .post("/register", null, {
+        params: {
+          username: user.username,
+          password: user.password,
+        },
+      })
+      .then((response) => {
+        return response.data;
+      });
   },
 };

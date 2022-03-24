@@ -40,6 +40,12 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/CalculatorView.vue"),
   },
+  {
+    path: "/homepage",
+    name: "UserHomePage",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/UserHomePage.vue"),
+  },
 ];
 
 const router = createRouter({

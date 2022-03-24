@@ -11,6 +11,24 @@ export default createStore({
     submission: [],
     users: [],
     currentUser: "",
+    token: "",
+  },
+  getters: {
+    getName(state) {
+      return state.currentUser;
+    },
+
+    getLoginStatus(state) {
+      return state.loginStatus;
+    },
+
+    getToken(state) {
+      return state.token;
+    },
+
+    getUser(state) {
+      return state.user;
+    },
   },
   mutations: {
     ADD_SUBMISSION(state, submission) {
@@ -40,6 +58,9 @@ export default createStore({
     ADD_USER(state, user) {
       state.users.push(user);
     },
+    SET_CURRENT_TOKEN(state, token) {
+      state.token = token;
+    },
   },
   actions: {
     submitSubmission({ commit }, submission) {
@@ -58,33 +79,18 @@ export default createStore({
         console.log("Error submission with id" + existing.id + " not found");
       }
     },
-    fetchUsers({ commit, state }) {
-      FeedbackService.getUsers()
-        .then((response) => {
-          commit("SET_USERS", response.data);
-          console.log(state.users.length);
-        })
-        .catch((error) => {
-          console.log("Error fetching users" + error);
-        });
-    },
-    fetchUserName({ commit, state }, username) {
-      const user = state.users.find((user) => user.username === username);
-      if (user) {
-        commit("SET_CURRENT_USER", user);
+    async fetchUserName({ commit }, user) {
+      const token = await FeedbackService.getToken(user);
+      const gottenUser = await FeedbackService.getUser(user);
+      console.log(gottenUser);
+      if (token) {
+        commit("SET_CURRENT_TOKEN", token);
+        commit("SET_CURRENT_USER", gottenUser);
+        return token;
       } else {
-        console.log("Error fetching user");
+        console.log("Error fetching token");
+        return null;
       }
-    },
-    postNewUser({ commit }, user) {
-      commit("ADD_USER", user);
-      FeedbackService.postUser(user)
-        .then(() => {
-          console.log("Sent successfully");
-        })
-        .catch((error) => {
-          console.log("Error sending user " + error);
-        });
     },
   },
   modules: {},

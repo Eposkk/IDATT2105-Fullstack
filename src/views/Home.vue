@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 v-if="!name">Hi, please login!</h1>
+    <h1 v-if="!name">Hi, please login or register!</h1>
     <div v-if="name">
       <h1>Welcome {{ name }}</h1>
       <router-link class="routerLink" to="/calculator">Calculator</router-link>

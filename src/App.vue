@@ -6,7 +6,27 @@
     <router-link class="routerLink" to="/">Home</router-link>
     <router-link class="routerLink" to="/about">About</router-link>
     <router-link class="routerLink" to="/kontaktskjema">Contact me</router-link>
-    <router-link class="routerLink" to="/login">Login</router-link>
+    <router-link
+      class="routerLink"
+      to="/login"
+      v-if="!this.$store.getters.getLoginStatus"
+      >Login</router-link
+    >
+
+    <router-link
+      class="routerLink"
+      to="/register"
+      v-if="!this.$store.getters.getLoginStatus"
+      >Register
+    </router-link>
+
+    <router-link
+      class="routerLink"
+      v-if="this.$store.getters.getLoginStatus"
+      to="/homepage"
+    >
+      {{ "Logged in: " + this.$store.getters.getName.username }}
+    </router-link>
   </div>
   <router-view class="view" />
 </template>

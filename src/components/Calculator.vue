@@ -39,10 +39,12 @@
       <button id="clearBtn" @click="clearButton()">Clear</button>
     </div>
   </div>
+  <button id="historybutton" @click="getHistory">Get history</button>
 </template>
 
 <script>
 import axios from "axios";
+import FeedbackService from "@/features/FeedbackService";
 export default {
   data() {
     return {
@@ -52,20 +54,17 @@ export default {
       firstValue: "",
       secondValue: "",
       history: [],
+      config: {
+        headers: {
+          Authorization: "Bearer " + this.$store.getters.getToken,
+        },
+      },
     };
   },
   methods: {
     sendCalculation(object) {
-      const apiClient = axios.create({
-        baseURL: "http://localhost:8001/api",
-        withCredentials: false,
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      });
-      apiClient
-        .post("/calc", object)
+      axios
+        .post("http://localhost:8001/calc", object, this.config)
         .then((response) => {
           console.log("Sent successfully answer: " + response.data);
           this.current = response.data.answer;
@@ -160,6 +159,13 @@ export default {
     },
     clearButton() {
       this.history = [];
+    },
+
+    async getHistory() {
+      const array = await FeedbackService.getHistory(this.config);
+      this.clearButton();
+      array.forEach((calc) => this.history.push(calc));
+      console.log(this.history);
     },
   },
 };
@@ -278,6 +284,9 @@ h1 {
 #equals {
   grid-column: 3 / span 2;
   background: #ffbc00 linear-gradient(to bottom, #ffce39 5%, #af9444 100%);
+}
+#history {
+  margin: 10px;
 }
 
 @media screen and (max-width: 800px) {

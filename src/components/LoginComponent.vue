@@ -22,11 +22,8 @@
       <button data-test="button" v-on:click="handleClickSignin">Sign in</button>
     </div>
     <div id="loginStatus">
-      <router-link to="/register"
-        ><p data-test="loginStatus" v-if="loginStatus">
-          {{ loginStatus }}
-        </p></router-link
-      >
+      <h3>{{ this.loginStatus }}</h3>
+      <router-link to="/register"><p data-test="loginStatus"></p></router-link>
     </div>
   </div>
 </template>
@@ -37,22 +34,28 @@ import router from "@/router";
 export default {
   name: "LoginComponent",
   methods: {
-    handleClickSignin() {
-      store.dispatch("fetchUserName", this.user.username);
-      console.log(this.user.username);
-      if (store.state.currentUser.username === this.user.username) {
-        if (store.state.currentUser.password === this.user.password) {
-          this.loginStatus = "Logged in";
-          router.push("/");
-          console.log("Logged in");
-        } else {
-          this.loginStatus =
-            "Username or password is wrong, register by clicking me";
-          console.log("Not logged in");
-        }
+    async handleClickSignin() {
+      let gotResponse = false;
+      let response;
+      try {
+        response = await store.dispatch("fetchUserName", this.user);
+        gotResponse = true;
+      } catch (exception) {
+        gotResponse = false;
+      }
+      console.log(gotResponse);
+
+      console.log(response);
+      if (gotResponse === false) {
+        this.loginStatus = "Wrong credentials";
+        store.commit("SET_LOGINSTATUS", false);
+        console.log("Wrong credentials");
       } else {
-        this.loginStatus = "Username not found, register by clicking me";
-        console.log("Not logged in");
+        this.loginStatus = "Logged in";
+        store.commit("SET_LOGINSTATUS", true);
+        await router.push("/homepage");
+        console.log(store.getters.getLoginStatus);
+        console.log("Logged in");
       }
     },
   },
@@ -64,9 +67,6 @@ export default {
       },
       loginStatus: "",
     };
-  },
-  mounted() {
-    store.dispatch("fetchUsers");
   },
 };
 </script>

@@ -37,29 +37,27 @@
 
 <script>
 import BaseInput from "../components/BaseInput";
-import store from "@/store";
+import FeedbackService from "@/features/FeedbackService";
 import { v4 as uuidv4 } from "uuid";
 
 export default {
   components: { BaseInput },
   name: "Register",
   methods: {
-    handleRegistration() {
+    async handleRegistration() {
       const user = {
         ...this.user,
         id: uuidv4(),
       };
       if (!(user.username === "" || user.password === "")) {
-        console.log(user);
-        store.dispatch("postNewUser", user).then(() => {
-          setTimeout(
-            () =>
-              this.$router.push("/login").catch((error) => {
-                console.log(error);
-              }),
-            100
-          );
-        });
+        const response = await FeedbackService.postUser(user);
+        console.log(response);
+        if (
+          response.username === user.username &&
+          response.password === user.password
+        ) {
+          this.registrationStatus = "Succsefully registered";
+        } else this.registrationStatus = "User already registered";
       } else this.registrationStatus = "Please fill out the registration";
     },
   },
