@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="94f0b259-65de-4ba2-956c-3959605f9d1f" name="Changes" comment="Deleted unused class">
+      <change beforePath="$PROJECT_DIR$/src/main/java/ntnu/calcBackend/security/CustomAuthenticationProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ntnu/calcBackend/security/CustomAuthenticationProvider.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="com.haulmont.jpb.JpaEntity" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/ntnu/calcBackend/security/CustomAuthenticationProvider.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/ntnu/calcBackend/model/User.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/ntnu/calcBackend/controllers/RestApiController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/ntnu/calcBackend/security/JWTAuthorizationFilter.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/ntnu/calcBackend/security/SecurityConfig.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/ntnu/calcBackend/WebConfig.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/ntnu/calcBackend/repositories/UserRepository.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/ntnu/calcBackend/controllers/TokenController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectId" id="26mPktJJWlUXLQ1in5aPN967x0O" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.57223266" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager" selected="Spring Boot.CalcBackendApplication">
+    <configuration name="Build" type="MavenRunConfiguration" factoryName="Maven">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="package" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="CalcBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="calcBackend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="ntnu.calcBackend.CalcBackendApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SHORTEN_COMMAND_LINE" value="NONE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Maven.Build" />
+      <item itemvalue="Spring Boot.CalcBackendApplication" />
+    </list>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="94f0b259-65de-4ba2-956c-3959605f9d1f" name="Changes" comment="" />
+      <created>1648025935863</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1648025935863</updated>
+      <workItem from="1648025937162" duration="505000" />
+      <workItem from="1648026472221" duration="11470000" />
+      <workItem from="1648043810767" duration="721000" />
+      <workItem from="1648115017417" duration="1515000" />
+      <workItem from="1648116572057" duration="101000" />
+      <workItem from="1648116849380" duration="213000" />
+      <workItem from="1648117082076" duration="15567000" />
+      <workItem from="1648139460723" duration="14000" />
+      <workItem from="1648139715083" duration="3958000" />
+      <workItem from="1648151593260" duration="596000" />
+      <workItem from="1648206734811" duration="440000" />
+    </task>
+    <task id="LOCAL−00001" summary="Added: User and Calculation entity types">
+      <created>1648036656269</created>
+      <option name="number" value="LOCAL−00001" />
+      <option name="presentableId" value="LOCAL−00001" />
+      <updated>1648036656269</updated>
+    </task>
+    <task id="LOCAL−00002" summary="Added: JPA and MySQL support">
+      <created>1648036679471</created>
+      <option name="number" value="LOCAL−00002" />
+      <option name="presentableId" value="LOCAL−00002" />
+      <updated>1648036679471</updated>
+    </task>
+    <task id="LOCAL−00003" summary="Added: Settings for JPA">
+      <created>1648036700697</created>
+      <option name="number" value="LOCAL−00003" />
+      <option name="presentableId" value="LOCAL−00003" />
+      <updated>1648036700697</updated>
+    </task>
+    <task id="LOCAL−00004" summary="Added: Repositories for Calculation and User Entities">
+      <created>1648036767772</created>
+      <option name="number" value="LOCAL−00004" />
+      <option name="presentableId" value="LOCAL−00004" />
+      <updated>1648036767772</updated>
+    </task>
+    <task id="LOCAL−00005" summary="Added: WebConfig">
+      <created>1648043853434</created>
+      <option name="number" value="LOCAL−00005" />
+      <option name="presentableId" value="LOCAL−00005" />
+      <updated>1648043853434</updated>
+    </task>
+    <task id="LOCAL−00006" summary="Added: More endpoints">
+      <created>1648043908936</created>
+      <option name="number" value="LOCAL−00006" />
+      <option name="presentableId" value="LOCAL−00006" />
+      <updated>1648043908936</updated>
+    </task>
+    <task id="LOCAL−00007" summary="Added: Functionality required in oblig 5">
+      <created>1648138745670</created>
+      <option name="number" value="LOCAL−00007" />
+      <option name="presentableId" value="LOCAL−00007" />
+      <updated>1648138745670</updated>
+    </task>
+    <task id="LOCAL−00008" summary="Added: Password Hashing">
+      <created>1648148407306</created>
+      <option name="number" value="LOCAL−00008" />
+      <option name="presentableId" value="LOCAL−00008" />
+      <updated>1648148407306</updated>
+    </task>
+    <task id="LOCAL−00009" summary="Optimized imports">
+      <created>1648148792518</created>
+      <option name="number" value="LOCAL−00009" />
+      <option name="presentableId" value="LOCAL−00009" />
+      <updated>1648148792518</updated>
+    </task>
+    <task id="LOCAL−00010" summary="Deleted unused class">
+      <created>1648148802412</created>
+      <option name="number" value="LOCAL−00010" />
+      <option name="presentableId" value="LOCAL−00010" />
+      <updated>1648148802412</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added: User and Calculation entity types" />
+    <MESSAGE value="Added: JPA and MySQL support" />
+    <MESSAGE value="Added: Settings for JPA" />
+    <MESSAGE value="Added: Repositories for Calculation and User Entities" />
+    <MESSAGE value="Added: WebConfig" />
+    <MESSAGE value="Added: More endpoints" />
+    <MESSAGE value="Added: Functionality required in oblig 5" />
+    <MESSAGE value="Added: Password Hashing" />
+    <MESSAGE value="Optimized imports" />
+    <MESSAGE value="Deleted unused class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deleted unused class" />
+  </component>
+</project>

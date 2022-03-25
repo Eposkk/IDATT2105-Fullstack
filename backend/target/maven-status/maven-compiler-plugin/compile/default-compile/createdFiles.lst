@@ -1,0 +1,14 @@
+ntnu\calcBackend\controllers\RestApiController.class
+ntnu\calcBackend\LoginRequest.class
+ntnu\calcBackend\security\JWTAuthorizationFilter.class
+ntnu\calcBackend\CalcBackendApplication.class
+ntnu\calcBackend\WebConfig.class
+ntnu\calcBackend\repositories\CalculationRepository.class
+ntnu\calcBackend\model\Calculation.class
+ntnu\calcBackend\controllers\TokenController.class
+ntnu\calcBackend\repositories\UserRepository.class
+ntnu\calcBackend\security\SecurityConfig.class
+ntnu\calcBackend\model\User.class
+ntnu\calcBackend\logic\Calculator.class
+ntnu\calcBackend\logic\PasswordHashing.class
+ntnu\calcBackend\security\CustomAuthenticationProvider.class

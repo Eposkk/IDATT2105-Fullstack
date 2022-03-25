@@ -1,0 +1,14 @@
+C:\Users\Eivind Strand Harboe\Google Drive\NTNU\4Semester\FullStack\Obliger\olbig 5\Backend-til-Fullstack\src\main\java\ntnu\calcBackend\logic\Calculator.java
+C:\Users\Eivind Strand Harboe\Google Drive\NTNU\4Semester\FullStack\Obliger\olbig 5\Backend-til-Fullstack\src\main\java\ntnu\calcBackend\controllers\TokenController.java
+C:\Users\Eivind Strand Harboe\Google Drive\NTNU\4Semester\FullStack\Obliger\olbig 5\Backend-til-Fullstack\src\main\java\ntnu\calcBackend\CalcBackendApplication.java
+C:\Users\Eivind Strand Harboe\Google Drive\NTNU\4Semester\FullStack\Obliger\olbig 5\Backend-til-Fullstack\src\main\java\ntnu\calcBackend\repositories\UserRepository.java
+C:\Users\Eivind Strand Harboe\Google Drive\NTNU\4Semester\FullStack\Obliger\olbig 5\Backend-til-Fullstack\src\main\java\ntnu\calcBackend\logic\PasswordHashing.java
+C:\Users\Eivind Strand Harboe\Google Drive\NTNU\4Semester\FullStack\Obliger\olbig 5\Backend-til-Fullstack\src\main\java\ntnu\calcBackend\security\CustomAuthenticationProvider.java
+C:\Users\Eivind Strand Harboe\Google Drive\NTNU\4Semester\FullStack\Obliger\olbig 5\Backend-til-Fullstack\src\main\java\ntnu\calcBackend\controllers\RestApiController.java
+C:\Users\Eivind Strand Harboe\Google Drive\NTNU\4Semester\FullStack\Obliger\olbig 5\Backend-til-Fullstack\src\main\java\ntnu\calcBackend\model\Calculation.java
+C:\Users\Eivind Strand Harboe\Google Drive\NTNU\4Semester\FullStack\Obliger\olbig 5\Backend-til-Fullstack\src\main\java\ntnu\calcBackend\security\SecurityConfig.java
+C:\Users\Eivind Strand Harboe\Google Drive\NTNU\4Semester\FullStack\Obliger\olbig 5\Backend-til-Fullstack\src\main\java\ntnu\calcBackend\WebConfig.java
+C:\Users\Eivind Strand Harboe\Google Drive\NTNU\4Semester\FullStack\Obliger\olbig 5\Backend-til-Fullstack\src\main\java\ntnu\calcBackend\security\JWTAuthorizationFilter.java
+C:\Users\Eivind Strand Harboe\Google Drive\NTNU\4Semester\FullStack\Obliger\olbig 5\Backend-til-Fullstack\src\main\java\ntnu\calcBackend\LoginRequest.java
+C:\Users\Eivind Strand Harboe\Google Drive\NTNU\4Semester\FullStack\Obliger\olbig 5\Backend-til-Fullstack\src\main\java\ntnu\calcBackend\model\User.java
+C:\Users\Eivind Strand Harboe\Google Drive\NTNU\4Semester\FullStack\Obliger\olbig 5\Backend-til-Fullstack\src\main\java\ntnu\calcBackend\repositories\CalculationRepository.java
